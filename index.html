@@ -23,7 +23,9 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
                 type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Araç Kirala
-
+                <!-- Burayı muhammet yapıcak (araç ekle)
+                    ,Marka(input),Model(input),Color(select),Günlük Ücret(input)
+                    -->
             </button>
         </li>
     </ul>
@@ -32,9 +34,26 @@
             aria-labelledby="pills-home-tab">
             <div class="row">
                 <div class="col-6">
-                    <!-- Burayı muhammet yapıcak (araç ekle)
-                    ,Marka,Model,Color,Günlük Ücret
-                    -->
+                    <form class="form-control">
+                        <label id="marka"><b>Marka</b></label>
+                        <input type="text" class="form-control">
+                        <label id="model"><b>Model</b></label>
+                        <input type="text" class="form-control">
+                        <label id="color"><b>Renk</b></label>
+                        <select class="form-control" >
+                            <option>Sarı</option>
+                            <option>Siyah</option>
+                            <option>Kırmızı</option>
+                            <option>Mavi</option>
+                            <option>Turuncu</option>
+                            <option>Mor</option>
+                            <option>Pembe</option>
+                        </select>
+                        <label><b>Günlük Ücret</b></label>
+                        <input type="number" class="form-control">
+                        <button class="btn btn-outline-primary mt-3">Araç Ekle</button>
+                    </form>
+
                 </div>
             </div>
         </div>
