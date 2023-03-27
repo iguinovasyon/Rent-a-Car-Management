@@ -1,14 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Rent-A-Car</title>
 </head>
-<body>
-   
+
+<body class="bg-dark">
+    <ul class="nav nav-pills mb-3 ms-5" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Araç Ekle</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Kullanıcı Ekle</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Araç Kirala
+
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active text-center ms-5" id="pills-home" role="tabpanel"
+            aria-labelledby="pills-home-tab">
+            <div class="row">
+                <div class="col-6">
+                    <!-- Burayı muhammet yapıcak (araç ekle)
+                    ,Marka,Model,Color,Günlük Ücret
+                    -->
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade text-center ms-5" id="pills-profile" role="tabpanel"
+            aria-labelledby="pills-profile-tab">
+            <div class="row">
+                <div class="col-6">
+                    <!-- Burayı ege yapıcak (müşteri ekle)
+                    Tam isim,Cinsiyet,Ehliyet
+                    Bilgi,-->
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade  text-center ms-5" id="pills-contact" role="tabpanel"
+            aria-labelledby="pills-contact-tab">
+            <div class="row ">
+                <div class="col-6 ">
+                    <form class="form-control">
+                        <label id="user">Müşteri</label>
+                        <select class="form-control  ">
+                            <option>Kullanıcı Seç</option>
+                        </select>
+
+                        <label id="user" class="mt-2">Araba</label>
+                        <select class="form-control ">
+                            <option>Kullanıcı Seç</option>
+                        </select>
+
+                        <label>Bitiş Tarih</label>
+                        <input type="date" id="deadline" class="form-control" min="27.03.2023">
+
+                        <button class="btn btn-outline-primary mt-3">Araç Kirala</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
