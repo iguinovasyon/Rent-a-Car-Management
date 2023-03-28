@@ -42,9 +42,31 @@
             aria-labelledby="pills-profile-tab">
             <div class="row">
                 <div class="col-6">
-                    <!-- Burayı ege yapıcak (müşteri ekle)
-                    Tam isim,Cinsiyet,Ehliyet
-                    Bilgi,-->
+                    <form class="form-control">
+                        <label id="user">Ad</label>
+                        <input type="text" id="name" class="form-control">  
+                        <br>
+
+                        <label id="user">Soyad</label>
+                        <input type="text" id="surName" class="form-control"> 
+                        <br>
+
+                        <label id="user">Cinsiyet</label>
+                        <select class="form-control">
+                            <option>--Cinsiyet Seçiniz--</option>
+                            <option>Erkek</option>
+                            <option>Kadın</option>
+                        </select>
+                        <br>
+
+                        <label id="user">Ehliyet</label>
+                        <select class="form-control">
+                            <option>Var</option>
+                            <option>Yok</option>
+                        </select>
+
+                    </form>
+                
                 </div>
             </div>
         </div>
