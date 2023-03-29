@@ -11,108 +11,98 @@
 </head>
 
 <body class="bg-dark">
-    <ul class="nav nav-pills  mb-3 ms-5" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link text-white active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Araç Ekle</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link text-white" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Kullanıcı Ekle</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link text-white" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Araç Kirala
 
-            </button>
-        </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active text-center ms-5" id="pills-home" role="tabpanel"
-            aria-labelledby="pills-home-tab">
-            <div class="row">
-                <div class="col-6">
-                    <!-- Burayı muhammet yapıcak (araç ekle)
-                    ,Marka,Model,Color,Günlük Ücret
-                    -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-4">
+                <ul class="nav nav-pills  mb-3 ms-5" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-white active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                            type="button" role="tab" aria-controls="pills-home" aria-selected="true">Araç Ekle</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-white" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                            type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Kullanıcı Ekle</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-white" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Araç Kirala
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active text-center ms-5" id="pills-home" role="tabpanel"
+                        aria-labelledby="pills-home-tab">
+                        <form class="form-control">
+                            <label id="marka"><b>Marka</b></label>
+                            <input type="text" class="form-control">
+                            <label id="model"><b>Model</b></label>
+                            <input type="text" class="form-control">
+                            <label id="color"><b>Renk</b></label>
+                            <select class="form-control">
+                                <option>Sarı</option>
+                                <option>Siyah</option>
+                                <option>Kırmızı</option>
+                                <option>Mavi</option>
+                                <option>Turuncu</option>
+                                <option>Mor</option>
+                                <option>Pembe</option>
+                            </select>
+                            <label><b>Günlük Ücret</b></label>
+                            <input type="number" class="form-control">
+                            <button class="btn btn-outline-primary mt-3">Araç Ekle</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade text-center ms-5" id="pills-profile" role="tabpanel"
+                        aria-labelledby="pills-profile-tab">
+                        <form class="form-control">
+                            <label id="user">Ad</label>
+                            <input type="text" id="name" class="form-control">
+                            <br>
+                            <label id="user">Soyad</label>
+                            <input type="text" id="surName" class="form-control">
+                            <br>
+                            <label id="user">Cinsiyet</label>
+                            <select class="form-control">
+                                <option>--Cinsiyet Seçiniz--</option>
+                                <option>Erkek</option>
+                                <option>Kadın</option>
+                            </select>
+                            <br>
+                            <label id="user">Ehliyet</label>
+                            <select class="form-control">
+                                <option>Var</option>
+                                <option>Yok</option>
+                            </select>
+                            <button class="btn btn-outline-primary mt-3">Müşteri Ekle</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade  text-center ms-5" id="pills-contact" role="tabpanel"
+                        aria-labelledby="pills-contact-tab">
+                        <form class="form-control bg-dark">
+                            <label id="user" class="mt-4 text-white">Müşteri</label>
+                            <select class="form-control bg-primary text-white ">
+                                <option class="text-center">Kullanıcı Seç</option>
+                            </select>
+                            <label id="user" class="mt-4 text-white">Araba</label>
+                            <select class="form-control   bg-primary text-white ">
+                                <option class="text-center">Araç seç</option>
+                            </select>
+                            <label class="text-white mt-4">Bitiş Tarih</label>
+                            <input type="date" id="deadline" class="form-control   bg-primary text-white text-center"
+                                min="27.03.2023">
+                            <button class="btn btn-outline-primary mt-3">Araç Kirala</button>
+                        </form>
+                    </div>
                 </div>
+                
+            </div>
+            <div class="col-8">
+
             </div>
         </div>
-        <div class="tab-pane fade text-center ms-5" id="pills-profile" role="tabpanel"
-            aria-labelledby="pills-profile-tab">
-                <div class="col-4">
-                    <form class="form-control">
-                        <label id="user">Ad</label>
-                        <input type="text" id="name" class="form-control">
-                        <br>
-
-                        <label id="user">Soyad</label>
-                        <input type="text" id="surName" class="form-control">
-                        <br>
-
-                        <label id="user">Cinsiyet</label>
-                        <select class="form-control">
-                            <option>--Cinsiyet Seçiniz--</option>
-                            <option>Erkek</option>
-                            <option>Kadın</option>
-                        </select>
-                        <br>
-
-                        <label id="user">Ehliyet</label>
-                        <select class="form-control">
-                            <option>Var</option>
-                            <option>Yok</option>
-                        </select>
-                        <button class="btn btn-outline-primary mt-3">Müşteri Ekle</button>
-
-                    </form>
-                </div>
-                <div class="tab-pane fade  text-center " id="pills-contact" role="tabpanel"
-                    aria-labelledby="pills-contact-tab">
-                    <form class="form-control bg-dark">
-                        <label id="user" class="text-white">Müşteri</label>
-                        <select class="form-control bg-primary text-white ">
-                            <option class="text-center">Kullanıcı Seç</option>
-                        </select>
-
-                        <label id="user" class="mt-4 text-white">Araba</label>
-                        <select class="form-control   bg-primary text-white ">
-                            <option class="text-center">Araç seç</option>
-                        </select>
-
-                        <label class="text-white mt-4">Bitiş Tarih</label>
-                        <input type="date" id="deadline" class="form-control   bg-primary text-white text-center"
-                            min="27.03.2023">
-
-                        <button class="btn btn-outline-primary mt-3">Araç Kirala</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-8 ">
-            <ul class="nav nav-pills  mb-3 ms-5" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-white active" id="pills-car-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-car" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">Araçları Listele</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-white" id="pills-customer-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-customer" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false">Kullanıcıları Listele</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-white" id="pills-rentcar-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-rentacar" type="button" role="tab" aria-controls="pills-contact"
-                        aria-selected="false">Kiralanmış Araçları Listele
-        
-                    </button>
-                </li>
-            </ul>
-        </div>
     </div>
-    </div>
-
 </body>
 
 </html>
