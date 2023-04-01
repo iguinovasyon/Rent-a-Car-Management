@@ -60,6 +60,7 @@ function addCar() {
     document.getElementById("CarBrand").focus();
 
     carDropdownRefresh();
+    swal("Araç Eklendi!", "Araç Başarıyla Eklendi!", "success");
 }
 function printCars(){
     const carlist = document.getElementById("carlist");
