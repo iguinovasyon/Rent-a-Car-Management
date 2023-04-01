@@ -35,12 +35,13 @@
                     <div class="tab-pane fade show active text-center ms-5" id="pills-home" role="tabpanel"
                         aria-labelledby="pills-home-tab">
                         <form class="form-control">
-                            <label id="marka"><b>Marka</b></label>
-                            <input type="text" class="form-control">
+                            
+                            <label id=""><b>Marka</b></label>
+                            <input type="text" id="CarBrand" class="form-control">
                             <label id="model"><b>Model</b></label>
-                            <input type="text" class="form-control">
+                            <input type="text" id="CarBrandType" class="form-control">
                             <label id="color"><b>Renk</b></label>
-                            <select class="form-control">
+                            <select class="form-control" id="CarColor">
                                 <option>Sarı</option>
                                 <option>Siyah</option>
                                 <option>Kırmızı</option>
@@ -50,8 +51,8 @@
                                 <option>Pembe</option>
                             </select>
                             <label><b>Günlük Ücret</b></label>
-                            <input type="number" class="form-control">
-                            <button class="btn btn-outline-primary mt-3">Araç Ekle</button>
+                            <input type="number" id="CarPrice" class="form-control">
+                            <button class="btn btn-outline-primary mt-3" id="addCar">Araç Ekle</button>
                         </form>
                     </div>
                     <div class="tab-pane fade text-center ms-5" id="pills-profile" role="tabpanel"
@@ -111,7 +112,7 @@
                          <table class="table text-white mt-2">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th scope="col">#</th>
                                     <th scope="col">Marka</th>
                                     <th scope="col">Model</th>
                                     <th scope="col">Renk</th>
@@ -119,6 +120,9 @@
                                     <th scope="col">Durum</th>
                                 </tr>
                             </thead>
+                            <tbody id="carlist">
+
+                            </tbody>
 
                          </table>
                     </div>
@@ -135,27 +139,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <th scope="col">1</th>
-                                <th scope="col">#</th>
-                                <th scope="col">#</th>
-                                <th scope="col">#</th>
-                                </tr>
-                                <tr>
-                                <th scope="col">2</th>
-                                <th scope="col">#</th>
-                                <th scope="col">#</th>
-                                <th scope="col">#</th>
-                                </tr>
-                                <tr>
-                                 <th scope="col">3</th>
-                                <th scope="col">#</th>
-                                <th scope="col">#</th>
-                                <th scope="col">#</th>
-                                </tr>
-
-                                
-                             
+                               
                             </tbody>
                           </table>
 
@@ -185,6 +169,7 @@
 </body>
 
 </html>
+<script src="/dist/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
