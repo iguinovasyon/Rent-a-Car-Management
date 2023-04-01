@@ -126,12 +126,14 @@ function addCustomer() {
         tableDataSurName.innerText = user.SurName;
         tableDataGender.innerText = user.Gender;
         tableDataDriverLicenseStatus.innerText = user.DriverLicenseType;
+        tableDatauserAge.innerText=user.Age;
 
         row.appendChild(tableDataId);
         row.appendChild(tableDataName);
         row.appendChild(tableDataSurName);
         row.appendChild(tableDataGender);
         row.appendChild(tableDataDriverLicenseStatus);
+        row.appendChild(tableDatauserAge);
 
         document.getElementById('userList').appendChild(row);
     })
