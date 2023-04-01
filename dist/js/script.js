@@ -1,11 +1,12 @@
 class User {
-    constructor(UserId, UserName, SurName, Gender, DriverLicenseType) {
+    constructor(UserId, UserName, SurName, Gender, DriverLicenseType,userAge) {
         this.UserId = UserId;
         this.UserName = UserName;
         this.SurName = SurName;
         this.status = true;
         this.Gender = Gender;
         this.DriverLicenseType = DriverLicenseType;
+        this.Age = userAge;
         this.rentACars = [];
     }
 
@@ -102,10 +103,11 @@ function addCustomer() {
     const surName = document.getElementById('surName').value;
     const gender = document.getElementById('gender').value;
     const driveLicense = document.getElementById('driverLicense').value;
+    const userAge = document.getElementById('userAge').value
 
     userId++;
 
-    const user = new User(userId, name, surName, gender, driveLicense)
+    const user = new User(userId, name, surName, gender, driveLicense, userAge)
 
     UserList.push(user);
 
@@ -117,6 +119,7 @@ function addCustomer() {
         const tableDataSurName = document.createElement('td');
         const tableDataGender = document.createElement('td');
         const tableDataDriverLicenseStatus = document.createElement('td');
+        const tableDatauserAge = document.createElement('td');
 
         tableDataId.innerText = user.UserId;
         tableDataName.innerText = user.UserName;
@@ -182,6 +185,9 @@ function addRentACar() {
 }
 function userDropdownRefresh() {
     const selectUser = document.getElementById("users");
+    
+    selectUser.innerHTML = `<option disabled value selected> --Cinsiyet Seçiniz--</option>`;
+
 
     selectUser.innerHTML = `<option disabled value selected> -- Select User --</option>`;
 
