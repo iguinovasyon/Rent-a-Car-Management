@@ -1,10 +1,9 @@
 class User {
-    constructor(UserId, UserName, SurName, Age, Gender, DriverLicenseType, status) {
+    constructor(UserId, UserName, SurName, Gender, DriverLicenseType) {
         this.UserId = UserId;
         this.UserName = UserName;
         this.SurName = SurName;
-        this.Age = Age;
-        this.status = status;
+        this.status = true;
         this.Gender = Gender;
         this.DriverLicenseType = DriverLicenseType;
         this.rentACars = [];
@@ -12,13 +11,13 @@ class User {
 
 }
 class Car {
-    constructor(CarId, Brand, BrandType, Color, DailyPrice) {
+    constructor(CarId, Brand, BrandType, Color, DailyPrice,Status) {
         this.CarId = CarId;
         this.Brand = Brand;
         this.Color = Color;
         this.DailyPrice = DailyPrice;
         this.BrandType = BrandType;
-        this.Status = true;
+        this.Status = Status;
     }
 }
 class LeasedVehicles {
@@ -42,17 +41,30 @@ var leasedVehiclesId = 0;
 const CarList = [];
 const UserList = [];
 const LeasedVehics = [];
+
 function addCar() {
     const CarBrand = document.getElementById("CarBrand").value;
     const Color = document.getElementById("CarColor").value;
     const DailyPrice = document.getElementById("CarPrice").value;
     const CarBrandType = document.getElementById("CarBrandType").value;
-
     carId++;
-    const car = new Car(carId, CarBrand, CarBrandType,Color, DailyPrice);
+    const car = new Car(carId, CarBrand, CarBrandType, Color, DailyPrice,true);
     CarList.push(car);
+
+    printCars();
+
+    document.getElementById("CarBrand").value = "";
+    document.getElementById("CarBrandType").value = "";
+    document.getElementById("CarColor").value = "";
+    document.getElementById("CarPrice").value = "1000";
+    document.getElementById("CarBrand").focus();
+
+    carDropdownRefresh();
+}
+function printCars(){
     const carlist = document.getElementById("carlist");
     carlist.innerHTML = "";
+
     CarList.forEach((car) => {
         const tr = document.createElement("tr");
         const thId = document.createElement("td");
@@ -67,7 +79,7 @@ function addCar() {
         th1.innerText = car.BrandType;
         th2.innerText = car.Color;
         th3.innerText = car.DailyPrice;
- 
+
         if (car.Status == true) thStatus.innerText = "Araç Kiralanabilir"
         else thStatus.innerText = "Araç Kiralanamaz"
 
@@ -83,13 +95,102 @@ function addCar() {
 
         var number = 0
     });
-    document.getElementById("CarBrand").value = "";
-    document.getElementById("CarBrandType").value = "";
-    document.getElementById("CarColor").value = "";
-    document.getElementById("CarPrice").value = "1000";
-    document.getElementById("CarBrand").focus();
+}
+function addCustomer() {
+    const name = document.getElementById('name').value;
+    const surName = document.getElementById('surName').value;
+    const gender = document.getElementById('gender').value;
+    const driveLicense = document.getElementById('driverLicense').value;
 
-    carDropdownRefresh();
+    userId++;
+
+    const user = new User(userId, name, surName, gender, driveLicense)
+
+    UserList.push(user);
+
+    document.getElementById('userList').innerHTML = "";
+    UserList.forEach((user) => {
+        const row = document.createElement('tr');
+        const tableDataId = document.createElement('td');
+        const tableDataName = document.createElement('td');
+        const tableDataSurName = document.createElement('td');
+        const tableDataGender = document.createElement('td');
+        const tableDataDriverLicenseStatus = document.createElement('td');
+
+        tableDataId.innerText = user.UserId;
+        tableDataName.innerText = user.UserName;
+        tableDataSurName.innerText = user.SurName;
+        tableDataGender.innerText = user.Gender;
+        tableDataDriverLicenseStatus.innerText = user.DriverLicenseType;
+
+        row.appendChild(tableDataId);
+        row.appendChild(tableDataName);
+        row.appendChild(tableDataSurName);
+        row.appendChild(tableDataGender);
+        row.appendChild(tableDataDriverLicenseStatus);
+
+        document.getElementById('userList').appendChild(row);
+    })
+    userDropdownRefresh();
+}
+function addRentACar() {
+    const customer = document.getElementById('users').value;
+    const carId = document.getElementById('cars').value;
+    const deadline = document.getElementById('deadline').value;
+
+    const selectedCar = CarList.find((car) => car.CarId == carId);
+    const selectedCustomer = UserList.find((user) => user.UserId == customer)
+    CarList.find((car) => car.CarId == carId).Status=false;
+    const totalPrice = selectedCar.DailyPrice * deadline;
+
+    leasedVehiclesId++;
+
+    const leasedVehic = new LeasedVehicles(leasedVehiclesId,selectedCustomer,selectedCar,deadline,totalPrice);
+
+    LeasedVehics.push(leasedVehic);
+    document.getElementById('leasedVehics').innerHTML="";
+    LeasedVehics.forEach((leased)=>{
+       const row = document.createElement('tr');
+       const tableDataId=document.createElement('td');
+       const tableDataCustomer=document.createElement('td');
+       const tableDataCar=document.createElement('td');
+       const tableDataDays=document.createElement('td');
+       const tableDataDailyPrice=document.createElement('td');
+       const tableDataTotalPrice=document.createElement('td');
+ 
+       tableDataId.innerText=leased.LeasedVehiclesId;
+       tableDataCustomer.innerText=leased.User.UserName+' '+leased.User.SurName;
+       tableDataCar.innerText=leased.Car.Brand+' '+leased.Car.BrandType;
+       tableDataDays.innerText=leased.TotalDays;
+       tableDataDailyPrice.innerText=leased.Car.DailyPrice;
+       tableDataTotalPrice.innerText=leased.Price;
+
+       
+
+       row.appendChild(tableDataId);
+       row.appendChild(tableDataCustomer);
+       row.appendChild(tableDataCar);
+       row.appendChild(tableDataDays);
+       row.appendChild(tableDataDailyPrice);
+       row.appendChild(tableDataTotalPrice);
+
+       document.getElementById('leasedVehics').appendChild(row);
+    })
+    printCars();
+
+}
+function userDropdownRefresh() {
+    const selectUser = document.getElementById("users");
+
+    selectUser.innerHTML = `<option disabled value selected> -- Select User --</option>`;
+
+    UserList.forEach((user) => {
+        const option = document.createElement("option");
+        option.value = user.UserId;
+        option.innerText = user.UserName + ' ' + user.SurName;
+
+        selectUser.add(option);
+    });
 }
 function carDropdownRefresh() {
     const selectCar = document.getElementById("cars");
@@ -98,15 +199,24 @@ function carDropdownRefresh() {
 
     CarList.forEach((car) => {
         const option = document.createElement("option");
-        option.value = car.Brand;
+        option.value = car.CarId;
         option.innerText = car.Brand;
 
         selectCar.add(option);
     });
 }
+
 document.getElementById("addCar").addEventListener("click", (e) => {
-    //bu komutu anlamadım.
-    e.preventDefault();
+    e.preventDefault(); //sayfanın yenilenmesini engelliyor
     addCar();
 });
+document.getElementById("addCustomer").addEventListener("click", (e) => {
+    e.preventDefault(); //sayfanın yenilenmesini engelliyor
+    addCustomer();
+});
+document.getElementById("addRentACar").addEventListener("click", (e) => {
+    e.preventDefault(); //sayfanın yenilenmesini engelliyor
+    addRentACar();
+});
 carDropdownRefresh();
+userDropdownRefresh();
