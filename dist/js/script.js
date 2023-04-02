@@ -36,7 +36,7 @@ class LeasedVehicles {
 }
 
 var carId = 10;
-var userId = 0;
+var userId = 10;
 var leasedVehiclesId = 0;
 
 const CarList = [{ CarId: 1, Brand: "Bmw", BrandType: "520i", Color: "Sarı", DailyPrice: 1000, Status: true },
@@ -49,16 +49,16 @@ const CarList = [{ CarId: 1, Brand: "Bmw", BrandType: "520i", Color: "Sarı", Da
     , { CarId: 8, Brand: "Volkswagen", BrandType: "Passat", Color: "Aşiret Paket", DailyPrice: 4000, Status: true }
     , { CarId: 9, Brand: "Volvo", BrandType: "xc90", Color: "Mavi", DailyPrice: 7000, Status: true }
     , { CarId: 10, Brand: "Murat", BrandType: "131", Color: "Beyaz", DailyPrice: 200, Status: true }];
-const UserList = [{ userId: 1, UserName: "Umut", SurName: "Tosun", Gender: "Erkek", DriverLicenseType: "var", userAge: 18 },
-{ userId: 2, UserName: "Kubilay Ege", SurName: "Sezer", Gender: "Erkek", DriverLicenseType: "var", userAge: 21 },
-{ userId: 3, UserName: "Muhammet", SurName: "Çelikçi", Gender: "Erkek", DriverLicenseType: "var", userAge: 31 },
-{ userId: 4, UserName: "İsmail", SurName: "Can Karataş", Gender: "Erkek", DriverLicenseType: "var", userAge: 68 },
-{ userId: 5, UserName: "Adem", SurName: "Eraslan", Gender: "Erkek", DriverLicenseType: "var", userAge: 25 },
-{ userId: 6, UserName: "Onur", SurName: "Işık", Gender: "Erkek", DriverLicenseType: "var", userAge: 23 },
-{ userId: 7, UserName: "Burak", SurName: "Taha", Gender: "Erkek", DriverLicenseType: "var", userAge: 18 },
-{ userId: 8, UserName: "Alperen", SurName: "yigit", Gender: "Erkek", DriverLicenseType: "var", userAge: 28 },
-{ userId: 9, UserName: "Yiğit", SurName: "Özdemir", Gender: "Erkek", DriverLicenseType: "var", userAge: 22 },
-{ userId: 10, UserName: "Can", SurName: "Tarakçı", Gender: "Erkek", DriverLicenseType: "var", userAge: 20 }];
+const UserList = [{ UserId: 1, UserName: "Umut", SurName: "Tosun", Gender: "Erkek", DriverLicenseType: "var", userAge: 18 },
+{ UserId: 2, UserName: "Kubilay Ege", SurName: "Sezer", Gender: "Erkek", DriverLicenseType: "var", userAge: 21 },
+{ UserId: 3, UserName: "Muhammet", SurName: "Çelikçi", Gender: "Erkek", DriverLicenseType: "var", userAge: 31 },
+{ UserId: 4, UserName: "İsmail", SurName: "Can Karataş", Gender: "Erkek", DriverLicenseType: "var", userAge: 68 },
+{ UserId: 5, UserName: "Adem", SurName: "Eraslan", Gender: "Erkek", DriverLicenseType: "var", userAge: 25 },
+{ UserId: 6, UserName: "Onur", SurName: "Işık", Gender: "Erkek", DriverLicenseType: "var", userAge: 23 },
+{ UserId: 7, UserName: "Burak", SurName: "Taha", Gender: "Erkek", DriverLicenseType: "var", userAge: 18 },
+{ UserId: 8, UserName: "Alperen", SurName: "yigit", Gender: "Erkek", DriverLicenseType: "var", userAge: 28 },
+{ UserId: 9, UserName: "Yiğit", SurName: "Özdemir", Gender: "Erkek", DriverLicenseType: "var", userAge: 22 },
+{ UserId: 10, UserName: "Can", SurName: "Tarakçı", Gender: "Erkek", DriverLicenseType: "var", userAge: 20 }];
 const LeasedVehics = [];
 
 function addCar() {
