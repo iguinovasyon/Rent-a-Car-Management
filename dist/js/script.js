@@ -132,7 +132,7 @@ function printUsers(){
         tableDataSurName.innerText = user.SurName;
         tableDataGender.innerText = user.Gender;
         tableDataDriverLicenseStatus.innerText = user.DriverLicenseType;
-        tableDatauserAge.innerText = user.Age;
+        tableDatauserAge.innerText = user.userAge;
 
         row.appendChild(tableDataId);
         row.appendChild(tableDataName);
