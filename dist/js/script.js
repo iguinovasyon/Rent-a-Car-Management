@@ -8,6 +8,7 @@ class User {
         this.DriverLicenseType = DriverLicenseType;
         this.Age = userAge;
         this.rentACars = [];
+        this.userAge=userAge;
     }
 
 }
