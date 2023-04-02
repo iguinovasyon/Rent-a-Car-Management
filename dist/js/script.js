@@ -116,7 +116,7 @@ function printCars() {
         var number = 0
     });
 }
-printUsers(){
+function printUsers(){
     document.getElementById('userList').innerHTML = "";
     UserList.forEach((user) => {
         const row = document.createElement('tr');
