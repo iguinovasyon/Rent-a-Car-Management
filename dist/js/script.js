@@ -1,5 +1,5 @@
 class User {
-    constructor(UserId, UserName, SurName, Gender, DriverLicenseType,userAge) {
+    constructor(UserId, UserName, SurName, Gender, DriverLicenseType, userAge) {
         this.UserId = UserId;
         this.UserName = UserName;
         this.SurName = SurName;
@@ -12,7 +12,7 @@ class User {
 
 }
 class Car {
-    constructor(CarId, Brand, BrandType, Color, DailyPrice,Status) {
+    constructor(CarId, Brand, BrandType, Color, DailyPrice, Status) {
         this.CarId = CarId;
         this.Brand = Brand;
         this.Color = Color;
@@ -49,7 +49,7 @@ function addCar() {
     const DailyPrice = document.getElementById("CarPrice").value;
     const CarBrandType = document.getElementById("CarBrandType").value;
     carId++;
-    const car = new Car(carId, CarBrand, CarBrandType, Color, DailyPrice,true);
+    const car = new Car(carId, CarBrand, CarBrandType, Color, DailyPrice, true);
     CarList.push(car);
 
     printCars();
@@ -63,7 +63,7 @@ function addCar() {
     carDropdownRefresh();
     swal("Araç Eklendi!", "Araç Başarıyla Eklendi!", "success");
 }
-function printCars(){
+function printCars() {
     const carlist = document.getElementById("carlist");
     carlist.innerHTML = "";
 
@@ -126,7 +126,7 @@ function addCustomer() {
         tableDataSurName.innerText = user.SurName;
         tableDataGender.innerText = user.Gender;
         tableDataDriverLicenseStatus.innerText = user.DriverLicenseType;
-        tableDatauserAge.innerText=user.Age;
+        tableDatauserAge.innerText = user.Age;
 
         row.appendChild(tableDataId);
         row.appendChild(tableDataName);
@@ -146,48 +146,60 @@ function addRentACar() {
 
     const selectedCar = CarList.find((car) => car.CarId == carId);
     const selectedCustomer = UserList.find((user) => user.UserId == customer)
-    CarList.find((car) => car.CarId == carId).Status=false;
+    
     const totalPrice = selectedCar.DailyPrice * deadline;
 
     leasedVehiclesId++;
+    if (selectedCar.Status == false) {
+        swal("Bu Araç Zaten Kiralanmıştır!", "Araç Kiralanamadı!", "error");
+    }
+    else if (selectedCustomer.Status == false) {
+        swal("Bir kullanıcı aynı anda 1`den fazla araç kiralayamaz!", "Araç Kiralanamadı!", "error");
+    }
+    else if (selectedCustomer.DriverLicenseType == "yok") {
+        swal("Ehliyeti Olmayan Kullanıcı Araç Kiralayamaz!", "Araç Kiralanamadı!", "error");
+    }
+    else {
+        CarList.find((car) => car.CarId == carId).Status = false;
+        UserList.find((user)=> user.UserId==customer).Status=false;
+        const leasedVehic = new LeasedVehicles(leasedVehiclesId, selectedCustomer, selectedCar, deadline, totalPrice);
 
-    const leasedVehic = new LeasedVehicles(leasedVehiclesId,selectedCustomer,selectedCar,deadline,totalPrice);
+        LeasedVehics.push(leasedVehic);
+        document.getElementById('leasedVehics').innerHTML = "";
+        LeasedVehics.forEach((leased) => {
+            const row = document.createElement('tr');
+            const tableDataId = document.createElement('td');
+            const tableDataCustomer = document.createElement('td');
+            const tableDataCar = document.createElement('td');
+            const tableDataDays = document.createElement('td');
+            const tableDataDailyPrice = document.createElement('td');
+            const tableDataTotalPrice = document.createElement('td');
 
-    LeasedVehics.push(leasedVehic);
-    document.getElementById('leasedVehics').innerHTML="";
-    LeasedVehics.forEach((leased)=>{
-       const row = document.createElement('tr');
-       const tableDataId=document.createElement('td');
-       const tableDataCustomer=document.createElement('td');
-       const tableDataCar=document.createElement('td');
-       const tableDataDays=document.createElement('td');
-       const tableDataDailyPrice=document.createElement('td');
-       const tableDataTotalPrice=document.createElement('td');
- 
-       tableDataId.innerText=leased.LeasedVehiclesId;
-       tableDataCustomer.innerText=leased.User.UserName+' '+leased.User.SurName;
-       tableDataCar.innerText=leased.Car.Brand+' '+leased.Car.BrandType;
-       tableDataDays.innerText=leased.TotalDays;
-       tableDataDailyPrice.innerText=leased.Car.DailyPrice;
-       tableDataTotalPrice.innerText=leased.Price;
+            tableDataId.innerText = leased.LeasedVehiclesId;
+            tableDataCustomer.innerText = leased.User.UserName + ' ' + leased.User.SurName;
+            tableDataCar.innerText = leased.Car.Brand + ' ' + leased.Car.BrandType;
+            tableDataDays.innerText = leased.TotalDays;
+            tableDataDailyPrice.innerText = leased.Car.DailyPrice;
+            tableDataTotalPrice.innerText = leased.Price;
 
-       
 
-       row.appendChild(tableDataId);
-       row.appendChild(tableDataCustomer);
-       row.appendChild(tableDataCar);
-       row.appendChild(tableDataDays);
-       row.appendChild(tableDataDailyPrice);
-       row.appendChild(tableDataTotalPrice);
 
-       document.getElementById('leasedVehics').appendChild(row);
-    })
-    printCars();
+            row.appendChild(tableDataId);
+            row.appendChild(tableDataCustomer);
+            row.appendChild(tableDataCar);
+            row.appendChild(tableDataDays);
+            row.appendChild(tableDataDailyPrice);
+            row.appendChild(tableDataTotalPrice);
+
+            document.getElementById('leasedVehics').appendChild(row);
+        })
+        printCars();
+    }
 
 }
 function userDropdownRefresh() {
     const selectUser = document.getElementById("users");
-    
+
     selectUser.innerHTML = `<option disabled value selected> --Cinsiyet Seçiniz--</option>`;
 
 
