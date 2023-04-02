@@ -195,7 +195,8 @@ function addRentACar() {
        document.getElementById('leasedVehics').appendChild(row);
     })
     printCars();
-
+    swal("Araç Kiralandı!", "Araç Başarıyla Kiralandı!", "success");
+}
 }
 function userDropdownRefresh() {
     const selectUser = document.getElementById("users");
