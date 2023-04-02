@@ -35,12 +35,30 @@ class LeasedVehicles {
     }
 }
 
-var carId = 0;
+var carId = 10;
 var userId = 0;
 var leasedVehiclesId = 0;
 
-const CarList = [];
-const UserList = [];
+const CarList = [{ CarId: 1, Brand: "Bmw", BrandType: "520i", Color: "Sarı", DailyPrice: 1000, Status: true },
+{ CarId: 2, Brand: "Fiat", BrandType: "Egea", Color: "Siyah", DailyPrice: 500, Status: true },
+{ CarId: 3, Brand: "Mercedes", BrandType: "Benz", Color: "Beyaz", DailyPrice: 4000, Status: true },
+{ CarId: 4, Brand: "Togg", BrandType: "Sedan", Color: "Gemlik", DailyPrice: 10000, Status: true }
+    , { CarId: 5, Brand: "Ferrari", BrandType: "599x", Color: "Kırmızı", DailyPrice: 20000, Status: true }
+    , { CarId: 6, Brand: "Ford", BrandType: "Mastenk", Color: "Siyah", DailyPrice: 1000, Status: true }
+    , { CarId: 7, Brand: "Volkswagen", BrandType: "Caddy", Color: "Mor", DailyPrice: 2000, Status: true }
+    , { CarId: 8, Brand: "Volkswagen", BrandType: "Passat", Color: "Aşiret Paket", DailyPrice: 4000, Status: true }
+    , { CarId: 9, Brand: "Volvo", BrandType: "xc90", Color: "Mavi", DailyPrice: 7000, Status: true }
+    , { CarId: 10, Brand: "Murat", BrandType: "131", Color: "Beyaz", DailyPrice: 200, Status: true }];
+const UserList = [{ userId: 1, UserName: "Umut", SurName: "Tosun", Gender: "Erkek", DriverLicenseType: "var", userAge: 18 },
+{ userId: 2, UserName: "Kubilay Ege", SurName: "Sezer", Gender: "Erkek", DriverLicenseType: "var", userAge: 21 },
+{ userId: 3, UserName: "Muhammet", SurName: "Çelikçi", Gender: "Erkek", DriverLicenseType: "var", userAge: 31 },
+{ userId: 4, UserName: "İsmail", SurName: "Can Karataş", Gender: "Erkek", DriverLicenseType: "var", userAge: 68 },
+{ userId: 5, UserName: "Adem", SurName: "Eraslan", Gender: "Erkek", DriverLicenseType: "var", userAge: 25 },
+{ userId: 6, UserName: "Onur", SurName: "Işık", Gender: "Erkek", DriverLicenseType: "var", userAge: 23 },
+{ userId: 7, UserName: "Burak", SurName: "Taha", Gender: "Erkek", DriverLicenseType: "var", userAge: 18 },
+{ userId: 8, UserName: "Alperen", SurName: "yigit", Gender: "Erkek", DriverLicenseType: "var", userAge: 28 },
+{ userId: 9, UserName: "Yiğit", SurName: "Özdemir", Gender: "Erkek", DriverLicenseType: "var", userAge: 22 },
+{ userId: 10, UserName: "Can", SurName: "Tarakçı", Gender: "Erkek", DriverLicenseType: "var", userAge: 20 }];
 const LeasedVehics = [];
 
 function addCar() {
@@ -98,19 +116,7 @@ function printCars() {
         var number = 0
     });
 }
-function addCustomer() {
-    const name = document.getElementById('name').value;
-    const surName = document.getElementById('surName').value;
-    const gender = document.getElementById('gender').value;
-    const driveLicense = document.getElementById('driverLicense').value;
-    const userAge = document.getElementById('userAge').value
-
-    userId++;
-
-    const user = new User(userId, name, surName, gender, driveLicense, userAge)
-
-    UserList.push(user);
-
+printUsers(){
     document.getElementById('userList').innerHTML = "";
     UserList.forEach((user) => {
         const row = document.createElement('tr');
@@ -138,11 +144,26 @@ function addCustomer() {
         document.getElementById('userList').appendChild(row);
     })
     userDropdownRefresh();
+}
+function addCustomer() {
+    const name = document.getElementById('name').value;
+    const surName = document.getElementById('surName').value;
+    const gender = document.getElementById('gender').value;
+    const driveLicense = document.getElementById('driverLicense').value;
+    const userAge = document.getElementById('userAge').value
+
+    userId++;
+
+    const user = new User(userId, name, surName, gender, driveLicense, userAge)
+
+    UserList.push(user);
+
+    printUsers();
     swal("Müşteri Eklendi!", "Müşteri Başarıyla Eklendi!", "success");
-    document.getElementById('name').value=""; 
-    document.getElementById('surName').value="";
-    document.getElementById('gender').value="";
-    document.getElementById('userAge').value="18";
+    document.getElementById('name').value = "";
+    document.getElementById('surName').value = "";
+    document.getElementById('gender').value = "";
+    document.getElementById('userAge').value = "18";
 }
 function addRentACar() {
     const customer = document.getElementById('users').value;
@@ -151,7 +172,7 @@ function addRentACar() {
 
     const selectedCar = CarList.find((car) => car.CarId == carId);
     const selectedCustomer = UserList.find((user) => user.UserId == customer)
-    
+
     const totalPrice = selectedCar.DailyPrice * deadline;
 
     leasedVehiclesId++;
@@ -166,7 +187,7 @@ function addRentACar() {
     }
     else {
         CarList.find((car) => car.CarId == carId).Status = false;
-        UserList.find((user)=> user.UserId==customer).Status=false;
+        UserList.find((user) => user.UserId == customer).Status = false;
         const leasedVehic = new LeasedVehicles(leasedVehiclesId, selectedCustomer, selectedCar, deadline, totalPrice);
 
         LeasedVehics.push(leasedVehic);
@@ -196,14 +217,14 @@ function addRentACar() {
             row.appendChild(tableDataDailyPrice);
             row.appendChild(tableDataTotalPrice);
 
-       document.getElementById('leasedVehics').appendChild(row);
-       document.getElementById('users').value="";
-       document.getElementById('cars').value="";
-       document.getElementById('deadline').value="1";
-    })
-    printCars();
-    swal("Araç Kiralandı!", "Araç Başarıyla Kiralandı!", "success");
-}
+            document.getElementById('leasedVehics').appendChild(row);
+            document.getElementById('users').value = "";
+            document.getElementById('cars').value = "";
+            document.getElementById('deadline').value = "1";
+        })
+        printCars();
+        swal("Araç Kiralandı!", "Araç Başarıyla Kiralandı!", "success");
+    }
 }
 function userDropdownRefresh() {
     const selectUser = document.getElementById("users");
@@ -229,7 +250,7 @@ function carDropdownRefresh() {
     CarList.forEach((car) => {
         const option = document.createElement("option");
         option.value = car.CarId;
-        option.innerText = car.Brand;
+        option.innerText = car.Brand + ' ' + car.BrandType;
 
         selectCar.add(option);
     });
@@ -249,3 +270,5 @@ document.getElementById("addRentACar").addEventListener("click", (e) => {
 });
 carDropdownRefresh();
 userDropdownRefresh();
+printCars();
+printUsers();
