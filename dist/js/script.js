@@ -139,6 +139,10 @@ function addCustomer() {
     })
     userDropdownRefresh();
     swal("Müşteri Eklendi!", "Müşteri Başarıyla Eklendi!", "success");
+    document.getElementById('name').value=""; 
+    document.getElementById('surName').value="";
+    document.getElementById('gender').value="";
+    document.getElementById('userAge').value="18";
 }
 function addRentACar() {
     const customer = document.getElementById('users').value;
@@ -193,6 +197,9 @@ function addRentACar() {
             row.appendChild(tableDataTotalPrice);
 
        document.getElementById('leasedVehics').appendChild(row);
+       document.getElementById('users').value="";
+       document.getElementById('cars').value="";
+       document.getElementById('deadline').value="1";
     })
     printCars();
     swal("Araç Kiralandı!", "Araç Başarıyla Kiralandı!", "success");
