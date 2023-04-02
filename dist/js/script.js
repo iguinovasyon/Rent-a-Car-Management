@@ -138,6 +138,7 @@ function addCustomer() {
         document.getElementById('userList').appendChild(row);
     })
     userDropdownRefresh();
+    swal("Müşteri Eklendi!", "Müşteri Başarıyla Eklendi!", "success");
 }
 function addRentACar() {
     const customer = document.getElementById('users').value;
@@ -183,6 +184,7 @@ function addRentACar() {
        document.getElementById('leasedVehics').appendChild(row);
     })
     printCars();
+    swal("Araç Kiralandı!", "Araç Başarıyla kiralandı!", "success");
 
 }
 function userDropdownRefresh() {
